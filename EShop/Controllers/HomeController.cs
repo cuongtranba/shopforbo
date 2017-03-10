@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace EShop.Controllers
 {
@@ -25,6 +21,26 @@ namespace EShop.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        [ChildActionOnly]
+        public ActionResult Banner()
+        {
+            return PartialView("_Banner");
+        }
+        [ChildActionOnly]
+        public ActionResult NewArrivals()
+        {
+            return PartialView("_NewArrivals");
+        }
+        [ChildActionOnly]
+        public ActionResult Discount()
+        {
+            return PartialView("_Discount");
+        }
+        [ChildActionOnly]
+        public ActionResult Product()
+        {
+            return PartialView("_Product");
         }
     }
 }

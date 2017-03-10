@@ -337,6 +337,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\_Banner.cshtml" />
+    <Content Include="Views\Home\_NewArrivals.cshtml" />
+    <Content Include="Views\Home\_Discount.cshtml" />
+    <Content Include="Views\Home\_Product.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
