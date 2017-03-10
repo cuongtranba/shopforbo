@@ -28,9 +28,9 @@ namespace EShop.Controllers
             return PartialView("_Banner");
         }
         [ChildActionOnly]
-        public ActionResult NewArrivals()
+        public ActionResult Products()
         {
-            return PartialView("_NewArrivals");
+            return PartialView("_Products");
         }
         [ChildActionOnly]
         public ActionResult Discount()
@@ -38,9 +38,19 @@ namespace EShop.Controllers
             return PartialView("_Discount");
         }
         [ChildActionOnly]
-        public ActionResult Product()
+        public ActionResult BannerBottom()
         {
-            return PartialView("_Product");
+            return PartialView("_BannerBottom");
+        }
+        [ChildActionOnly]
+        public ActionResult Brands()
+        {
+            return PartialView("_Brands");
+        }
+        [ChildActionOnly]
+        public ActionResult NewProduct()
+        {
+            return PartialView("_NewProduct");
         }
     }
 }
