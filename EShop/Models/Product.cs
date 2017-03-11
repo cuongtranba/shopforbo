@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,6 +11,7 @@ namespace EShop.Models
         public Product()
         {
             Tags = new HashSet<Tag>();
+            CreatedDate = DateTime.Now;
             InStock = true;
         }
         [Key]
@@ -30,6 +32,14 @@ namespace EShop.Models
         public int Price { get; set; }
         [DisplayName("Loại")]
         public int CategoryId { get; set; }
+        [DisplayName("Hàng giảm giá")]
+        public bool IsSale { get; set; }
+        [DisplayName("Hàng đặt biệt")]
+        public bool IsSpecial { get; set; }
+        [DisplayName("Ngày nhập")]
+        public DateTime CreatedDate { get; set; }
+        [DisplayName("Giá giảm")]
+        public int DiscountPrice { get; set; }
         public virtual Category Category { get; set; }
         public virtual ICollection<Tag> Tags { get; set; }
         [DisplayName("Hình")]

@@ -30,13 +30,22 @@
             @Html.DisplayNameFor(model => model.InStock)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.DiscountPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSpecial)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
         </th>
         <th></th>
     </tr>
@@ -61,14 +70,24 @@
         <td>
             @Html.DisplayFor(modelItem => item.InStock)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.DiscountPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsSale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsSpecial)
+        </td>
+        <td>
             <img height="100px" width="100px" src="@($"/Content/ProductImages/{item.Image}")"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
         </td>
         <td>
             @Html.ActionLink("Sửa", "Edit", new {id = item.ProductId}) |

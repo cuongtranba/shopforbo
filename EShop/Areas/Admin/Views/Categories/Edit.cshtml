@@ -1,15 +1,15 @@
 ﻿@model EShop.Models.Category
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Sửa";
 }
 
-<h2>Edit</h2>
+<h2>Sửa</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit","Categories",FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+    @Html.HiddenFor(c=>c.Image)
     <div class="form-horizontal">
         <h4>Category</h4>
         <hr />
@@ -31,6 +31,18 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <img src="@($"/Content/CategoryImages/{Model.Image}")" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Hình</label>
+            <div class="col-md-2">
+                <input type="file" name="file" />
             </div>
         </div>
 

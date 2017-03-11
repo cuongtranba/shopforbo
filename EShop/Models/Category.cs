@@ -18,6 +18,8 @@ namespace EShop.Models
         public bool IsDeleted { get; set; }
         [DisplayName("Tên loại")]
         public string Name { get; set; }
+        [DisplayName("Hình")]
+        public string Image { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
 }

@@ -25,10 +25,12 @@
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-
+        <dd>
+            <img src="@($"/Content/CategoryImages/{Model.Image}")"/>
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CategoryId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.CategoryId }) |
+    @Html.ActionLink("Về trang chủ", "Index")
 </p>

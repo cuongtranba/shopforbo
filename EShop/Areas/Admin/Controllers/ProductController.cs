@@ -41,7 +41,7 @@ namespace EShop.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Category.Where(c => c.IsDeleted == false).ToList(), "CategoryId", "Name");
-            return View();
+            return View(new Product());
         }
 
         // POST: Admin/Product/Create
@@ -97,7 +97,7 @@ namespace EShop.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Title,Description,Quantity,InStock,IsDeleted,Price,CategoryId,Image")] Product product)
+        public ActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
             {

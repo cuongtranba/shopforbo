@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -9,7 +10,7 @@ namespace EShop.Areas.Admin.Controllers
     public class CategoriesController : Controller
     {
         private EShopContext db = new EShopContext();
-
+        private string ImageDic = "~/Content/CategoryImages/";
         // GET: Admin/Categories
         public ActionResult Index()
         {
@@ -42,10 +43,22 @@ namespace EShop.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CategoryId,IsDeleted,Name")] Category category)
+        public ActionResult Create(Category category)
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath(ImageDic), fileName);
+                        category.Image = fileName;
+                        file.SaveAs(path);
+                    }
+                }
                 db.Category.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -74,10 +87,22 @@ namespace EShop.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CategoryId,IsDeleted,Name")] Category category)
+        public ActionResult Edit(Category category)
         {
             if (ModelState.IsValid)
             {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(file.FileName);
+                        var path = Path.Combine(Server.MapPath(ImageDic), fileName);
+                        category.Image = fileName;
+                        file.SaveAs(path);
+                    }
+                }
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
