@@ -96,16 +96,16 @@ html[xmlns] .flexslider .slides {
 }
 .flex-viewport {
 max-height: 450px;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
-    border:none;
-    float: left;
-    width: 75%;
-    margin-right: 10px;
-    border: 1px solid #D1CFCF;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	transition: all 1s ease;
+	border:none;
+	float: left;
+	width: 75%;
+	margin-right: 10px;
+	border: 1px solid #D1CFCF;
 }
 
 .loading .flex-viewport {
@@ -193,12 +193,12 @@ max-height: 450px;
   content: '\f003';
 }
 .flex-control-nav {
-    /* width: 100%; */
-    position: absolute;
-    /* bottom: -40px; */
-    text-align: center;
-    float: right;
-    width: 22%;
+	/* width: 100%; */
+	position: absolute;
+	/* bottom: -40px; */
+	text-align: center;
+	float: right;
+	width: 22%;
 }
 .flex-control-nav li {
   margin: 0 6px;
@@ -237,8 +237,8 @@ max-height: 450px;
   overflow: hidden;
 }
 .flex-control-thumbs li {
-    width: 76%;
-    margin: 0 0 6px 0px;
+	width: 76%;
+	margin: 0 0 6px 0px;
 }
 .flex-control-thumbs li:nth-child(4){
 	margin:0;
@@ -254,7 +254,7 @@ max-height: 450px;
   -ms-transition: all 1s ease;
   -o-transition: all 1s ease;
   transition: all 1s ease;
-    border: 1px solid #D1CFCF;
+	border: 1px solid #D1CFCF;
 }
 .flex-control-thumbs img:hover {
   opacity: 1;
@@ -268,12 +268,12 @@ max-height: 450px;
  * ====================================================================================================================*/
 @media screen and (max-width: 860px) {
   .flex-direction-nav .flex-prev {
-    opacity: 1;
-    left: 10px;
+	opacity: 1;
+	left: 10px;
   }
   .flex-direction-nav .flex-next {
-    opacity: 1;
-    right: 10px;
+	opacity: 1;
+	right: 10px;
   }
 }
 @media screen and (max-width: 480px) {

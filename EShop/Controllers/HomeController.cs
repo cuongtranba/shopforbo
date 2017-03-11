@@ -52,5 +52,10 @@ namespace EShop.Controllers
         {
             return PartialView("_NewProduct");
         }
+
+        public ActionResult Help()
+        {
+            return View();
+        }
     }
 }
