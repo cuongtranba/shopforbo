@@ -1,0 +1,12 @@
+﻿@model List<EShop.Models.Category>
+@{
+    Layout = null;
+}
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("ProductByCategory", "Product", new { categoryId = item.CategoryId })"><i class="fa fa-arrow-right" aria-hidden="true"></i>@item.Name</a></li>
+}
+
+
+

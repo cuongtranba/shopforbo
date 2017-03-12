@@ -1,9 +1,13 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using EShop.Models;
 
 namespace EShop.Controllers
 {
     public class HomeController : Controller
     {
+        private EShopContext db = new EShopContext();
+
         public ActionResult Index()
         {
             return View();
@@ -56,6 +60,21 @@ namespace EShop.Controllers
         public ActionResult Help()
         {
             return View();
+        }
+        [ChildActionOnly]
+        public ActionResult Menu()
+        {
+
+            var categories = db.Category.Where(c => c.IsDeleted == false).ToList();
+            return PartialView("_Menu",categories);
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
