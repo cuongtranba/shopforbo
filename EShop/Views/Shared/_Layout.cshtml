@@ -17,28 +17,28 @@
     <div class="agileits_header">
         <div class="container">
             @*<div class="w3l_offers">
-                <p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="products.html">SHOP NOW</a></p>
-            </div>*@
+                    <p>SALE UP TO 70% OFF. USE CODE "SALE70%" . <a href="products.html">SHOP NOW</a></p>
+                </div>*@
             @*<div class="agile-login">
-                <ul>
-                    @if (!User.Identity.IsAuthenticated)
+                    <ul>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li><a href="@Url.Action("Register","Account")">Tạo Tài Khoản</a></li>
+                            <li><a href="@Url.Action("Login","Account")">Đăng nhập</a></li>
+
+                        }
+                        else
+                        {
+                            <li><a href="#">Chào @User.Identity.GetUserName()</a></li>
+                            <li><a onclick="document.getElementById('logOffForm').submit();" href="#">Thoát</a></li>
+                        }
+                        <li><a href="@Url.Action("Help","Home")">Giúp đỡ</a></li>
+                    </ul>
+                    @using (Html.BeginForm("LogOff","Account",FormMethod.Post,new {id="logOffForm"}))
                     {
-                        <li><a href="@Url.Action("Register","Account")">Tạo Tài Khoản</a></li>
-                        <li><a href="@Url.Action("Login","Account")">Đăng nhập</a></li>
-                            
+                        @Html.AntiForgeryToken()
                     }
-                    else
-                    {
-                        <li><a href="#">Chào @User.Identity.GetUserName()</a></li>
-                        <li><a onclick="document.getElementById('logOffForm').submit();" href="#">Thoát</a></li>
-                    }
-                    <li><a href="@Url.Action("Help","Home")">Giúp đỡ</a></li>
-                </ul>
-                @using (Html.BeginForm("LogOff","Account",FormMethod.Post,new {id="logOffForm"}))
-                {
-                    @Html.AntiForgeryToken()
-                }
-            </div>*@
+                </div>*@
             <div class="product_list_header">
                 <form action="#" method="post" class="last">
                     <input type="hidden" name="cmd" value="_cart">
@@ -80,8 +80,7 @@
         <div class="container">
             <nav class="navbar navbar-default">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                
-                @Html.Action("Menu","Home")
+                @Html.Action("Menu", "Home")
             </nav>
         </div>
     </div>
@@ -91,7 +90,7 @@
     <div class="container-fluid">
         @RenderBody()
     </div>
-
+    @Html.Partial("_Cart")
     <!-- //footer -->
     <div class="footer">
         <div class="container">
@@ -166,13 +165,16 @@
         </div>
     </div>
     <!-- //footer -->
+    <!--Modal cart-->
+
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    <script src="~/Scripts/minicart.min.js"></script>
     <script src="~/Scripts/skdslider.min.js"></script>
     <script src="~/Scripts/move-top.js"></script>
     <script src="~/Scripts/easing.js"></script>
+    <script src="~/Scripts/store.everything.min.js"></script>
 
     @RenderSection("scripts", required: false)
     <script>
@@ -187,13 +189,32 @@
             jQuery('#responsive').change(function () {
                 $('#responsive_wrapper').width(jQuery(this).val());
             });
-            paypal.minicart.render({
-                action: '#'
-            });
+            $(".add-to-cart").click(function () {
+                var data = $(this).data();
 
-            if (~window.location.search.indexOf('reset=true')) {
-                paypal.minicart.reset();
-            }
+                if (!store.get(data.productId)) {
+                    store.set(data.productId, { id: data.productId, price: data.price, priceDiscount: data.priceDiscount, title: data.productTitle, amount: 1 });
+                }
+
+                $('#myModal').modal('show');
+                $("#CartItems > tbody").empty();
+
+                store.each(function (value, key) {
+                    $("#CartItems > tbody").append(`<tr><td>${value.id}</td><td>${value.title}</td><td><input class="amount" type="number" data-product-id="${value.id}" value="${value.amount}" min="1" name="amount"></td><td>${value.price}</td><td></td></tr>`);
+                });
+
+                $(".amount").change(function () {
+                    var productId = $(this).data().productId;
+                    var currentValue = $(this).val();
+                    store.update(productId, {},function (productId) {
+                            productId.amount = currentValue;
+                    });
+                    store.update(productId, {}, function (productId) {
+                        productId.amount = currentValue;
+                    });
+                });
+
+            });
         });
     </script>
 </body>

@@ -57,6 +57,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -1231,6 +1239,7 @@
     <Content Include="Content\images\t4.jpg" />
     <Content Include="Content\images\tick.png" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\pignose.layerslider.css" />
     <Content Include="Content\skdslider.css" />
     <Content Include="Content\style.css" />
@@ -1417,6 +1426,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\move-top.js" />
     <Content Include="Scripts\pignose.layerslider.js" />
+    <Content Include="Scripts\ProductByCategory\ProductByCategory.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\responsiveslides.min.js" />
@@ -1468,6 +1478,7 @@
     <Content Include="Views\Category\MenuCategoryInProductPage.cshtml" />
     <None Include="Views\Home\_Menu.cshtml" />
     <None Include="Views\Product\Product.cshtml" />
+    <Content Include="Views\Product\Single.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
