@@ -22,9 +22,9 @@
                 <div class="products-right-grids">
                     <div class="sorting">
                         <select id="product-sort" url-action="@Url.Action("Sort", "Product", new { area = "" })" class="frm-field required sect">
-                        <option value="null">Default sorting</option>
-                        <option value="Price">xếp theo giá</option>
-                        <option value="Date">Xếp theo ngày</option>
+                            <option value="null">Default sorting</option>
+                            <option value="Price">xếp theo giá</option>
+                            <option value="Date">Xếp theo ngày</option>
                         </select>
                     </div>
                     <div class="sorting-left">
@@ -69,7 +69,7 @@
                                             </h4>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
-                                            <input type="button" data-product-title="@product.Title" data-product-id="@product.ProductId" data-price="@product.Price" data-price-discount="@product.DiscountPrice" name="submit" value="Thêm vào giỏ" data-toggle="modal" class="button add-to-cart">
+                                            <input type="button" data-product-title="@product.Title" data-product-id="@product.ProductId" data-price="@product.Price" data-price-discount="@product.DiscountPrice" name="submit" value="Thêm vào giỏ" data-total="@product.Price" data-toggle="modal" class="button add-to-cart">
                                         </div>
                                     </div>
                                 </figure>

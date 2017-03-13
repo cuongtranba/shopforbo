@@ -138,7 +138,6 @@
         </div>
 
         <div class="footer-copy">
-
             <div class="container">
                 <p>
                     © @DateTime.Now.Year Super Market. All rights reserved | Design by <a href="mailto:bacuongtr@gmail.com">w3layouts</a>
@@ -193,27 +192,59 @@
                 var data = $(this).data();
 
                 if (!store.get(data.productId)) {
-                    store.set(data.productId, { id: data.productId, price: data.price, priceDiscount: data.priceDiscount, title: data.productTitle, amount: 1 });
+                    store.set(data.productId, { id: data.productId, price: data.price, priceDiscount: data.priceDiscount, title: data.productTitle, amount: 1, total: data.total });
                 }
 
                 $('#myModal').modal('show');
                 $("#CartItems > tbody").empty();
 
+                var countTotal = function () {
+                    var total = 0;
+                    store.each(function (value, key) {
+                        total += value.price * value.amount;
+                    });
+                    return total;
+                };
+
+                $("#total").html(countTotal());
+
                 store.each(function (value, key) {
-                    $("#CartItems > tbody").append(`<tr><td>${value.id}</td><td>${value.title}</td><td><input class="amount" type="number" data-product-id="${value.id}" value="${value.amount}" min="1" name="amount"></td><td>${value.price}</td><td></td></tr>`);
+                    $("#CartItems > tbody").append(`<tr><td>${value.id}</td><td>${value.title}</td><td><input class="amount" type="number" data-product-id="${value.id}" value="${value.amount}" min="1" name="amount"></td><td>${value.price}</td><td id="${value.id}">${value.price * value.amount}</td></tr>`);
                 });
+
 
                 $(".amount").change(function () {
                     var productId = $(this).data().productId;
                     var currentValue = $(this).val();
-                    store.update(productId, {},function (productId) {
-                            productId.amount = currentValue;
-                    });
+                    var price = store.get(productId).price;
+                    $(`#${productId}`).html(price * currentValue);
+
                     store.update(productId, {}, function (productId) {
                         productId.amount = currentValue;
                     });
+                    store.update(productId, {}, function (productId) {
+                        productId.amount = currentValue;
+                        productId.total = currentValue * productId.amount;
+                    });
+                    $("#total").html(countTotal());
                 });
 
+            });
+            $("#check-out-btn").click(function () {
+                var address = $("#address").val();
+                var description = $("#description").val();
+                var phone = $("#phone").val();
+                var data = { address: address, description: description, phone: phone };
+                var items = [];
+                store.each(function (value, key) {
+                    items.push({amount:value.amount,productId:key});
+                });
+                data.OrderItems = items;
+                $.post("/checkout/index", { order: data }, function (result) {
+                    if (result) {
+                        
+                    }
+                });
             });
         });
     </script>

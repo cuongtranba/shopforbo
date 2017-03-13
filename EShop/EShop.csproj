@@ -193,6 +193,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CheckOutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -1408,6 +1409,7 @@
     <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Cart\cart.js" />
     <Content Include="Scripts\easing.js" />
     <Content Include="Scripts\easyResponsiveTabs.js" />
     <Content Include="Scripts\imagezoom.js" />
@@ -1432,6 +1434,9 @@
     <Content Include="Scripts\responsiveslides.min.js" />
     <Content Include="Scripts\simpleCart.min.js" />
     <Content Include="Scripts\skdslider.min.js" />
+    <Content Include="Scripts\store.everything.min.js" />
+    <Content Include="Scripts\store.legacy.min.js" />
+    <Content Include="Scripts\update.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -1476,9 +1481,11 @@
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\Shared\_BreadCrumbs.cshtml" />
     <Content Include="Views\Category\MenuCategoryInProductPage.cshtml" />
+    <Content Include="Views\CheckOut\Index.cshtml" />
     <None Include="Views\Home\_Menu.cshtml" />
     <None Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Product\Single.cshtml" />
+    <None Include="Views\Shared\_Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
