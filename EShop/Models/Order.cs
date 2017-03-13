@@ -24,5 +24,6 @@ namespace EShop.Models
         public string UserName { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
         public OrderStatus OrderStatus { get; set; }
+        public int Total { get; set; }
     }
 }

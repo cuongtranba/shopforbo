@@ -212,6 +212,14 @@
     <Compile Include="Migrations\201703111712289_AddInfo.Designer.cs">
       <DependentUpon>201703111712289_AddInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201703131359240_AddTotalPriceForOrder.cs" />
+    <Compile Include="Migrations\201703131359240_AddTotalPriceForOrder.Designer.cs">
+      <DependentUpon>201703131359240_AddTotalPriceForOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703131414331_ProductPriceInItems.cs" />
+    <Compile Include="Migrations\201703131414331_ProductPriceInItems.Designer.cs">
+      <DependentUpon>201703131414331_ProductPriceInItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs" />
@@ -1510,6 +1518,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201703111712289_AddInfo.resx">
       <DependentUpon>201703111712289_AddInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703131359240_AddTotalPriceForOrder.resx">
+      <DependentUpon>201703131359240_AddTotalPriceForOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703131414331_ProductPriceInItems.resx">
+      <DependentUpon>201703131414331_ProductPriceInItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

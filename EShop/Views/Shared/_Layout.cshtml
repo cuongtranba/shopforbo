@@ -242,7 +242,8 @@
                 data.OrderItems = items;
                 $.post("/checkout/index", { order: data }, function (result) {
                     if (result) {
-                        
+                        $('#myModal').modal('hide');
+                        alert("Bạn đã đặt hàng thành công");
                     }
                 });
             });
