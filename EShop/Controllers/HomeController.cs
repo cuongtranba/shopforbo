@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using EShop.Models;
 
@@ -29,12 +31,16 @@ namespace EShop.Controllers
         [ChildActionOnly]
         public ActionResult Banner()
         {
-            return PartialView("_Banner");
+            var productSpecial = db.Product.Where(c => c.IsSpecial).Take(5).ToList();
+            return PartialView("_Banner", productSpecial);
         }
         [ChildActionOnly]
         public ActionResult Products()
         {
-            return PartialView("_Products");
+            var specialProducts = db.Product.Where(c => c.IsSpecial).Take(6).ToList();
+            var saleProducts = db.Product.Where(c => c.IsSale).Take(6).ToList();
+            var specialProductAndSaleProduct = new Tuple<List<Product>,List<Product>>(specialProducts, saleProducts);
+            return PartialView("_Products", specialProductAndSaleProduct);
         }
         [ChildActionOnly]
         public ActionResult Discount()
