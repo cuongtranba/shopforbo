@@ -15,6 +15,7 @@ namespace EShop.Models
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DisplayName("Mã")]
         public int OrderId { get; set; }
         public DateTime CreatedDate { get; set; }
         [DisplayName("Địa chỉ")]

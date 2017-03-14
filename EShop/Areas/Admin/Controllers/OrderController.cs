@@ -23,21 +23,18 @@ namespace EShop.Areas.Admin.Controllers
             return View(order);
         }
 
-        public ActionResult Delete(int id)
-        {
-            var order = db.Order.Find(id);
-            if (order !=null)
-            {
-                order.OrderStatus = OrderStatus.Cancel;
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index");
-        }
 
         public ActionResult Edit(int id)
         {
-            throw new System.NotImplementedException();
+            var order = db.OrderItem.Find(id);
+            return View(order);
         }
+
+        public ActionResult Edit(OrderItem order)
+        {
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -45,6 +42,17 @@ namespace EShop.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult UpdateStatus(int id, OrderStatus orderStatus)
+        {
+            var order = db.Order.Find(id);
+            if (order != null)
+            {
+                order.OrderStatus = orderStatus;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }

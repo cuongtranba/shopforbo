@@ -31,8 +31,10 @@
             <th>@(EnumHelperCustom<OrderStatus>.GetDisplayValue(item.OrderStatus))</th>
             <th>
                 @Html.ActionLink("Sửa", "Edit", new { id = item.OrderId }) |
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.OrderId }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.OrderId })
+                @Html.ActionLink("Chi tiết", "Details", new {id = item.OrderId}) |
+                @Html.ActionLink("Đang giao", "UpdateStatus", new { id = item.OrderId, orderStatus = OrderStatus.Shipping }) |
+                @Html.ActionLink("Hủy", "UpdateStatus", new { id = item.OrderId, orderStatus=OrderStatus.Cancel }) |
+                @Html.ActionLink("Hoàn thành", "UpdateStatus", new { id = item.OrderId, orderStatus = OrderStatus.Done })
             </th>
         </tr>
     }
