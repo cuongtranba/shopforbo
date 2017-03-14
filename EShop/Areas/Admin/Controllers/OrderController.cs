@@ -15,6 +15,29 @@ namespace EShop.Areas.Admin.Controllers
             var orders = db.Order.Include(d => d.OrderItems).OrderByDescending(c => c.CreatedDate).ToList();
             return View(orders);
         }
+       
+
+        public ActionResult Details(int id)
+        {
+            var order = db.Order.Include(d => d.OrderItems).FirstOrDefault(c => c.OrderId == id);
+            return View(order);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var order = db.Order.Find(id);
+            if (order !=null)
+            {
+                order.OrderStatus = OrderStatus.Cancel;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            throw new System.NotImplementedException();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -22,21 +45,6 @@ namespace EShop.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public ActionResult Details(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ActionResult Delete(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public ActionResult Edit(int id)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

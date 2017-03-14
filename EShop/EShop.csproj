@@ -1418,6 +1418,7 @@
     <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Details.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Cart\cart.js" />
     <Content Include="Scripts\easing.js" />

@@ -9,6 +9,8 @@ namespace EShop.Models
         [Display(Name = "đã giao")]
         Done = 2,
         [Display(Name = "mới")]
-        New = 3
+        New = 3,
+        [Display(Name = "Hủy")]
+        Cancel = 4
     }
 }
