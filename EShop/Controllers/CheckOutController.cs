@@ -29,7 +29,7 @@ namespace EShop.Controllers
                 try
                 {
                     order.Total = order.OrderItems.Sum(c => c.Price);
-                    order.OrderStatus = OrderStatus.Shipping;
+                    order.OrderStatus = OrderStatus.New;
                     db.Order.Add(order);
                     db.SaveChanges();
                 }

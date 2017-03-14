@@ -1,7 +1,39 @@
-﻿
+﻿@using EShop.Helpers
+@using EShop.Models
+@model IEnumerable<EShop.Models.Order>
 @{
     ViewBag.Title = "Đặt hàng";
 }
 
-<h2>Index</h2>
-
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.OrderId)</th>
+        <th>@Html.DisplayNameFor(model => model.UserName)</th>
+        <th>@Html.DisplayNameFor(model => model.Phone)</th>
+        <th>@Html.DisplayNameFor(model => model.Address)</th>
+        <th>@Html.DisplayNameFor(model => model.Description)</th>
+        <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
+        <th>Số lượng</th>
+        <th>Trạng thái</th>
+        <th>@Html.DisplayNameFor(model => model.Total)</th>
+        <td></td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.OrderId</th>
+            <th>@item.UserName</th>
+            <th>@item.Phone</th>
+            <th>@item.Address</th>
+            <th>@item.Description</th>
+            <th>@item.CreatedDate</th>
+            <th>@item.OrderItems.Count</th>
+            <th>@(EnumHelperCustom<OrderStatus>.GetDisplayValue(item.OrderStatus))</th>
+            <th>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.OrderId }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.OrderId }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.OrderId })
+            </th>
+        </tr>
+    }
+</table>
