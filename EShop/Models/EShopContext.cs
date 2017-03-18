@@ -14,6 +14,7 @@ namespace EShop.Models
         public DbSet<OrderItem> OrderItem { get; set; }
         public DbSet<Tag> Tag { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<Brand> Brands { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,5 +34,6 @@ namespace EShop.Models
                 .HasForeignKey(e => e.UserId);
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }

@@ -39,7 +39,7 @@ namespace EShop.Controllers
         {
             var specialProducts = db.Product.Where(c => c.IsSpecial).Take(6).ToList();
             var saleProducts = db.Product.Where(c => c.IsSale).Take(6).ToList();
-            var specialProductAndSaleProduct = new Tuple<List<Product>,List<Product>>(specialProducts, saleProducts);
+            var specialProductAndSaleProduct = new Tuple<List<Product>, List<Product>>(specialProducts, saleProducts);
             return PartialView("_Products", specialProductAndSaleProduct);
         }
         [ChildActionOnly]
@@ -55,12 +55,15 @@ namespace EShop.Controllers
         [ChildActionOnly]
         public ActionResult Brands()
         {
-            return PartialView("_Brands");
+            var brands = db.Brands.Where(c => c.IsDeleted == false).OrderByDescending(c => c.CreatedDate).ToList();
+            return PartialView("_Brands", brands);
         }
         [ChildActionOnly]
         public ActionResult NewProduct()
         {
-            return PartialView("_NewProduct");
+            var productSale =
+                db.Product.Where(c => c.IsDeleted == false && c.IsSale).OrderByDescending(c => c.CreatedDate).Take(4).ToList();
+            return PartialView("_NewProduct", productSale);
         }
 
         public ActionResult Help()
@@ -72,7 +75,9 @@ namespace EShop.Controllers
         {
 
             var categories = db.Category.Where(c => c.IsDeleted == false).ToList();
-            return PartialView("_Menu",categories);
+            var brands = db.Brands.Where(c => c.IsDeleted == false).ToList();
+            var menu = new Tuple<List<Category>, List<Brand>>(categories, brands);
+            return PartialView("_Menu", menu);
         }
         protected override void Dispose(bool disposing)
         {

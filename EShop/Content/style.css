@@ -1579,16 +1579,7 @@ ul.faq {
     text-align: center;
 }
 
-    .brands-w3l p a {
-        font-size: 17px;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: #39c;
-        background: #fff;
-        padding: 16px;
-        display: block;
-        border: 1px solid #e1e1e1;
-    }
+    
 
         .brands-w3l p a:hover {
             box-shadow: 0 0 6px 1px #b6b6b6;

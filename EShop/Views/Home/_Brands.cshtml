@@ -1,106 +1,20 @@
-﻿<div class="brands">
+﻿@model List<EShop.Models.Brand>
+<div class="brands">
     <div class="container">
         <h3>Nhãn hiệu</h3>
         <div class="brands-agile">
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
+            @foreach (var item in Model)
+            {
+                <div class="col-md-2 w3layouts-brand">
+                    <div class="brands-w3l">
+                        <p>
+                            <a href="@Url.Action("ProductByBrand", "Product", new {area = "", brandId = item.BrandId})">
+                                <img width="160px" height="58px" src="@($"/ProductImages/{@item.Image}")"/>
+                            </a>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="brands-agile-1">
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-        <div class="brands-agile-2">
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
-            <div class="col-md-2 w3layouts-brand">
-                <div class="brands-w3l">
-                    <p><a href="#">Lorem</a></p>
-                </div>
-            </div>
+            }
             <div class="clearfix"></div>
         </div>
     </div>

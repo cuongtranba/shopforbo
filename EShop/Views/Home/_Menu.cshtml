@@ -1,4 +1,4 @@
-﻿@model List<EShop.Models.Category>
+﻿@model Tuple<List<EShop.Models.Category>, List<EShop.Models.Brand>>
 <div class="navbar-header nav_2">
     <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
 
@@ -20,16 +20,31 @@
                     <div class="multi-gd-img">
                         <ul class="multi-column-dropdown">
                             <h6>Danh mục</h6>
-                            @foreach (var category in Model)
+                            @foreach (var category in Model.Item1)
                             {
                                 <li><a href="@Url.Action("ProductByCategory","Product",new {categoryId = category.CategoryId})">@category.Name</a></li>
                             }
                         </ul>
                     </div>
-
                 </div>
             </ul>
         </li>
-        <li><a href="contact.html">Liên hệ</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nhãn hiệu<b class="caret"></b></a>
+            <ul class="dropdown-menu multi-column columns-3">
+                <div class="row">
+                    <div class="multi-gd-img">
+                        <ul class="multi-column-dropdown">
+                            <h6>Nhãn hiệu</h6>
+                            @foreach (var brand in Model.Item2)
+                            {
+                                <li><a href="@Url.Action("ProductByBrand","Product",new {brandId = brand.BrandId})">@brand.BrandName</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </ul>
+        </li>
+        <li><a href="~/">Liên hệ</a></li>
     </ul>
 </div>

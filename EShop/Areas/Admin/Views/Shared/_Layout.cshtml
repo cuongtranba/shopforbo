@@ -33,7 +33,7 @@
             <nav class="navbar navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="../../index2.html" class="navbar-brand"><b>Admin</b>LTE</a>
+                        <a href="@Url.Action("Index", "Home", new { area = "Admin" })" class="navbar-brand"><b>Admin</b>LTE</a>
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                             <i class="fa fa-bars"></i>
                         </button>
@@ -50,6 +50,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="@Url.Action("Index","Categories")">Danh mục</a></li>
                                     <li><a href="@Url.Action("Index","Product")">Sản phẩm</a></li>
+                                    <li><a href="@Url.Action("Index","Brands")">Nhãn hiệu</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -70,7 +71,7 @@
                             <!-- Tasks Menu -->
                             <!-- User Account Menu -->
                             @Html.Partial("_UserMenu")
-                            
+
                         </ul>
                     </div>
                     <!-- /.navbar-custom-menu -->

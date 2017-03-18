@@ -27,6 +27,11 @@ namespace EShop.Controllers
             return View(product);
         }
 
+        public ActionResult ProductByBrand(int brandId)
+        {
+            var products = db.Product.Where(c => c.BrandId == brandId && c.IsDeleted == false).OrderByDescending(c => c.CreatedDate).ToList();
+            return View("Product", products);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -35,6 +40,5 @@ namespace EShop.Controllers
             }
             base.Dispose(disposing);
         }
-
     }
 }

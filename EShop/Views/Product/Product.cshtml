@@ -57,7 +57,7 @@
                                 <figure>
                                     <div class="snipcart-item block">
                                         <div class="snipcart-thumb">
-                                            <a href="@Url.Action("Single", "Product", new { productId = product.ProductId })"><img src="@($"/Content/ProductImages/{product.Image}")" alt=" " class="img-responsive"></a>
+                                            <a href="@Url.Action("Single", "Product", new { productId = product.ProductId })"><img src="@($"/ProductImages/{product.Image}")" alt=" " class="img-responsive"></a>
                                             <p>@product.Title</p>
                                             <h4>
                                                 @product.Price.ToString("c")

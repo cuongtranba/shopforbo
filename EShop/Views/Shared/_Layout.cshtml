@@ -55,7 +55,7 @@
                 </ul>
             </div>
             <div class="w3ls_logo_products_left">
-                <h1><a href="#">Annhienmom</a></h1>
+                <h1><a href="~/">Annhienmom</a></h1>
             </div>
             <div class="w3l_search">
                 <form action="#" method="post">
@@ -88,35 +88,35 @@
     </div>
     @Html.Partial("_Cart")
     <!-- //footer -->
-<div class="footer">
-    <div class="container">
-        <div class="w3_footer_grids">
-            <div class="col-md-12 w3_footer_grid">
-                <h3>Liên hệ</h3>
-
-                <ul class="address">
-                    <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>16/26 Lê Quý Đôn, Phường 12, Quận Phú Nhuận <span>Hồ Chí Minh</span></li>
-                    <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>0937444109</li>
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>
-
-    <div class="footer-copy">
+    <div class="footer">
         <div class="container">
-            <p>
-                © @DateTime.Now.Year Super Market. All rights reserved | Design by <a href="mailto:bacuongtr@gmail.com">w3layouts</a>
-                Code by <a href="mailto:bacuongtr@gmail.com">bacuongtr@gmail.com</a>
-            </p>
+            <div class="w3_footer_grids">
+                <div class="col-md-12 w3_footer_grid">
+                    <h3>Liên hệ</h3>
+
+                    <ul class="address">
+                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>16/26 Lê Quý Đôn, Phường 12, Quận Phú Nhuận <span>Hồ Chí Minh</span></li>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>0937444109</li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
         </div>
+
+        <div class="footer-copy">
+            <div class="container">
+                <p>
+                    © @DateTime.Now.Year Super Market. All rights reserved | Design by <a href="mailto:bacuongtr@gmail.com">w3layouts</a>
+                    Code by <a href="mailto:bacuongtr@gmail.com">bacuongtr@gmail.com</a>
+                </p>
+            </div>
+        </div>
+
     </div>
 
-</div>
-    
 
-<div class="footer-botm">
+    <div class="footer-botm">
         <div class="container">
             <div class="w3layouts-foot">
                 <ul>
@@ -157,7 +157,7 @@
             jQuery('#responsive').change(function () {
                 $('#responsive_wrapper').width(jQuery(this).val());
             });
-            var showCart = function() {
+            var showCart = function () {
                 $('#myModal').modal('show');
                 $("#CartItems > tbody").empty();
 
@@ -205,14 +205,29 @@
                 var phone = $("#phone").val();
                 var data = { address: address, description: description, phone: phone };
                 var items = [];
+
+                if (!address) {
+                    alert("vui lòng nhập địa chỉ");
+                    return;
+                }
+
+                if (!description) {
+                    alert("vui lòng nhập ghi chú");
+                    return;
+                }
+                if (!phone) {
+                    alert("vui lòng nhập số điện thoại");
+                    return;
+                }
+
                 store.each(function (value, key) {
-                    items.push({amount:value.amount,productId:key});
+                    items.push({ amount: value.amount, productId: key });
                 });
                 data.OrderItems = items;
                 $.post("/checkout/index", { order: data }, function (result) {
                     if (result) {
                         $('#myModal').modal('hide');
-                        alert("Bạn đã đặt hàng thành công");
+                        alert("Bạn đã đặt hàng thành công cửa hàng sẽ liên lạc với bạn sau...");
                         store.clearAll();
                     }
                 });

@@ -44,5 +44,7 @@ namespace EShop.Models
         public virtual ICollection<Tag> Tags { get; set; }
         [DisplayName("Hình")]
         public string Image { get; set; }
+        public virtual Brand Brand { get; set; }
+        public int? BrandId { get; set; }
     }
 }

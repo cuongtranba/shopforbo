@@ -5,8 +5,8 @@
         <div class="grid_3 grid_5">
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Bán chạy</a></li>
-                    <li role="presentation"><a href="#tours" role="tab" id="tours-tab" data-toggle="tab" aria-controls="tours">Mới về</a></li>
+                    <li role="presentation" class="active"><a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Đặt biệt</a></li>
+                    <li role="presentation"><a href="#tours" role="tab" id="tours-tab" data-toggle="tab" aria-controls="tours">Giảm giá</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="expeditions" aria-labelledby="expeditions-tab">
@@ -30,7 +30,7 @@
                                                 <figure>
                                                     <div class="snipcart-item block">
                                                         <div class="snipcart-thumb">
-                                                            <a href="@Url.Action("Single", "Product", new { productId = specialProduct.ProductId })"><img src="@($"/Content/ProductImages/{specialProduct.Image}")" alt=" " class="img-responsive"></a>
+                                                            <a href="@Url.Action("Single", "Product", new { productId = specialProduct.ProductId })"><img src="@($"/ProductImages/{specialProduct.Image}")" alt=" " class="img-responsive"></a>
                                                             <p>@specialProduct.Title</p>
                                                             <h4>
                                                                 @specialProduct.Price.ToString("c")
@@ -76,7 +76,7 @@
                                                     <figure>
                                                         <div class="snipcart-item block">
                                                             <div class="snipcart-thumb">
-                                                                <a href="@Url.Action("Single", "Product", new { productId = saleProduct.ProductId })"><img src="@($"/Content/ProductImages/{saleProduct.Image}")" alt=" " class="img-responsive"></a>
+                                                                <a href="@Url.Action("Single", "Product", new { productId = saleProduct.ProductId })"><img src="@($"/ProductImages/{saleProduct.Image}")" alt=" " class="img-responsive"></a>
                                                                 <p>@saleProduct.Title</p>
                                                                 <h4>
                                                                     @saleProduct.Price.ToString("c")

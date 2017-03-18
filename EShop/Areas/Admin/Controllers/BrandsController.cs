@@ -3,51 +3,47 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using EShop.Helpers;
 using EShop.Models;
-
+using EShop.Helpers;
 namespace EShop.Areas.Admin.Controllers
 {
-    public class ProductController : Controller
+    public class BrandsController : Controller
     {
         private EShopContext db = new EShopContext();
 
-        // GET: Admin/Product
+        // GET: Admin/Brands
         public ActionResult Index()
         {
-            var product = db.Product.Include(p => p.Category).Where(c => c.IsDeleted == false).OrderByDescending(c=>c.ProductId);
-            return View(product.ToList());
+            return View(db.Brands.ToList());
         }
 
-        // GET: Admin/Product/Details/5
+        // GET: Admin/Brands/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
-            if (product == null)
+            Brand brand = db.Brands.Find(id);
+            if (brand == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(brand);
         }
 
-        // GET: Admin/Product/Create
+        // GET: Admin/Brands/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Category.Where(c => c.IsDeleted == false).ToList(), "CategoryId", "Name");
-            ViewBag.BrandId = new SelectList(db.Brands.Where(c => c.IsDeleted == false).ToList(), "BrandId", "BrandName");
-            return View(new Product());
+            return View();
         }
 
-        // POST: Admin/Product/Create
+        // POST: Admin/Brands/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Brand brand)
         {
             if (ModelState.IsValid)
             {
@@ -59,43 +55,40 @@ namespace EShop.Areas.Admin.Controllers
                     {
                         var fileName = Path.GetFileName(file.FileName);
                         var path = Path.Combine(Server.MapPath(Constraint.ImageUrl), fileName);
-                        product.Image = fileName;
+                        brand.Image = fileName;
                         file.SaveAs(path);
                     }
                 }
-                
-                db.Product.Add(product);
-                db.SaveChanges();
 
+                db.Brands.Add(brand);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "Name", product.CategoryId);
-            return View(product);
+            return View(brand);
         }
 
-        // GET: Admin/Product/Edit/5
+        // GET: Admin/Brands/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
-            if (product == null)
+            Brand brand = db.Brands.Find(id);
+            if (brand == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "Name", product.CategoryId);
-            return View(product);
+            return View(brand);
         }
 
-        // POST: Admin/Product/Edit/5
+        // POST: Admin/Brands/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Brand brand)
         {
             if (ModelState.IsValid)
             {
@@ -107,41 +100,39 @@ namespace EShop.Areas.Admin.Controllers
                     {
                         var fileName = Path.GetFileName(file.FileName);
                         var path = Path.Combine(Server.MapPath(Constraint.ImageUrl), fileName);
-                        product.Image = fileName;
+                        brand.Image = fileName;
                         file.SaveAs(path);
                     }
                 }
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(brand).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "Name", product.CategoryId);
-            return View(product);
+            return View(brand);
         }
 
-        // GET: Admin/Product/Delete/5
+        // GET: Admin/Brands/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Product.Find(id);
-            if (product == null)
+            Brand brand = db.Brands.Find(id);
+            if (brand == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(brand);
         }
 
-        // POST: Admin/Product/Delete/5
+        // POST: Admin/Brands/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Product.Find(id);
-            product.IsDeleted = true;
-            db.Entry(product).State = EntityState.Modified;
+            Brand brand = db.Brands.Find(id);
+            db.Brands.Remove(brand);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -154,7 +145,5 @@ namespace EShop.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
-
-    
     }
 }
